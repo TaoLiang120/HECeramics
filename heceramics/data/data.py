@@ -13,10 +13,11 @@ from heceramics.data.compstr_util import CompstrUtil
 from heceramics.data.dataframe_util import DataFrameUtils
 
 
-CONTCAR_PATH = config_vars["CONTCAR_PATH"]
 DATA_PATH = config_vars["DATA_PATH"]
 float_format = Constants["float_format"]
 
+Elemental_ROM_KEYs = []
+Compound_ROM_KEYs = []
 
 class myData:
     def __init__(self, fname):
@@ -67,6 +68,13 @@ class myData:
                     outfile = outfile + "_normed.csv"
             self.save_to(outfile, df=df)
         return df
+
+    def get_elmental_ROMs(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
+        pass
+    def get_Compound_ROMs(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
+        pass
+    def get_mismatches(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
+        pass
 
     ############################################################
     def select_by_CS(self, df, compspace, condition, ncompon=None, style=0, set2gooddf=False):
