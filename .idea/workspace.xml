@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="47bcea88-a9ea-43b9-a3e0-c4e2b7607411" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2iWXhPx0Y3tTnl4TNcaxi6uZ839" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.Compression_gbr.executor": "Run",
+    "Python.Compression_gbr4summary.executor": "Run",
+    "Python.Elongation_gbr.executor": "Run",
+    "Python.Elongation_gbr4summary.executor": "Run",
+    "Python.NDIP.executor": "Run",
+    "Python.NDIP_fill_parallel.executor": "Run",
+    "Python.PDPlot.executor": "Run",
+    "Python.SFS_gbr.executor": "Run",
+    "Python.Vacancy2_SFS_w_preselect.executor": "Run",
+    "Python.Vacancy_SFS.executor": "Run",
+    "Python.Vacancy_SFS_w_preselect.executor": "Run",
+    "Python.Vacancy_formation_2.executor": "Run",
+    "Python.Vacancy_formation_gbr.executor": "Run",
+    "Python.Vicker_gbr.executor": "Run",
+    "Python.Vicker_gbr4summary.executor": "Run",
+    "Python.Yield_gbr4summary.executor": "Run",
+    "Python.composition_expansion_evaluation.executor": "Run",
+    "Python.compositionspace.executor": "Run",
+    "Python.compstr2prediction.executor": "Run",
+    "Python.make_binary.executor": "Run",
+    "Python.make_database.executor": "Run",
+    "Python.make_element.executor": "Run",
+    "Python.make_weighted_database.executor": "Run",
+    "Python.models.executor": "Run",
+    "Python.myglobal.executor": "Run",
+    "Python.plot.executor": "Run",
+    "Python.plot_custom.executor": "Run",
+    "Python.plot_hecs.executor": "Run",
+    "Python.plot_linear_regression.executor": "Run",
+    "Python.run.executor": "Run",
+    "Python.standardize.executor": "Run",
+    "Python.standarize.executor": "Run",
+    "Python.stardardize.executor": "Run",
+    "Python.ternary_NDIP.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.thermocalc_util.executor": "Run",
+    "Python.utils.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/taoliang/PycharmProjects/HECeramics/WorkPlace/SFS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WorkPlace/SFS" />
+      <recent name="$PROJECT_DIR$/WorkPlace/database_generator" />
+      <recent name="$PROJECT_DIR$/heceramics/utils" />
+      <recent name="$PROJECT_DIR$/heceramics/data" />
+      <recent name="$PROJECT_DIR$/Data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WorkPlace/ML_development" />
+      <recent name="$PROJECT_DIR$/heceramics/work" />
+      <recent name="$PROJECT_DIR$/WorkPlace/SFS/Example4paper" />
+      <recent name="$PROJECT_DIR$/ML_Development/Predictions" />
+      <recent name="$PROJECT_DIR$/ml4hec/test" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TC24A_HOME" value="/Applications/Thermo-Calc-2024a.app/Contents/Resources" />
+        <env name="LSHOST" value="ls2.mabe.utk.edu" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="47bcea88-a9ea-43b9-a3e0-c4e2b7607411" name="Changes" comment="" />
+      <created>1719607425828</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719607425828</updated>
+      <workItem from="1762904775564" duration="488000" />
+      <workItem from="1762907482828" duration="312000" />
+      <workItem from="1764780257960" duration="5370000" />
+      <workItem from="1764978994137" duration="3762000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+  </component>
+</project>

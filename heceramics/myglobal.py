@@ -25,6 +25,8 @@ Element_negativity = ['Y', 'Hf', 'Zr', 'Sc', 'Ta', 'Ti', 'Nb', 'V', 'Mo', 'W', '
 
 nele_default = len(Element_negativity)
 
+KeyColumns = ["Composition", "Pretty_Formula"]
+
 
 
 

@@ -1,4 +1,4 @@
-myml
+heceramics
 ======
 
 A custom machine learning models for high entropy ceramics

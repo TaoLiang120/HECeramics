@@ -1,8 +1,31 @@
 import os
-from heceramics.myglobal import config_vars, Constants, Element_negativity
+import numpy as np
+import pandas as pd
+
+from heceramics.data.compstr_util import CompstrUtil
+from heceramics.data.data import myData
+from heceramics.myglobal import config_vars, Constants, Element_negativity, KeyColumns
 from heceramics.models.models import MLRegressor, get_default_outfile
 
 float_format = Constants["float_format"]
+
+
+class Compstrs2data:
+    def __init__(self, compstrs, outfile="mydata.csv"):
+        self.compstrs = compstrs
+        self.outfile = outfile
+
+    def compstrs2dataframe(self, savefile=True):
+        df = pd.DataFrame(columns=KeyColumns)
+        df["Composition"] = self.compstrs
+        df["pretty_formula"] = df["Composition"].apply(lambda x: CompstrUtil(x).pretty_formula)
+        df.to_csv(self.outfile, index=False, float_format=float_format)
+        thisdata = myData(self.outfile)
+        thisdata.df = thisdata.get_all_features()
+        if savefile:
+            thisdata.save_to(self.outfile, df=thisdata.df)
+        return thisdata
+
 
 class DataFill:
     def __init__(self, data, key, features, modelname="GBR", mname_header=None, outkey=None):

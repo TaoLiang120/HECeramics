@@ -69,10 +69,16 @@ class myData:
             self.save_to(outfile, df=df)
         return df
 
+    def get_all_features(self, df=None, recompute=False):
+        if df is None: df = self.gooddf.copy()
+        return df
+
     def get_elmental_ROMs(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
         pass
-    def get_Compound_ROMs(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
+
+    def get_compound_ROMs(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
         pass
+
     def get_mismatches(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
         pass
 

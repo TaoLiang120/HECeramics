@@ -1,26 +1,22 @@
 import os
 import numpy as np
 import pandas as pd
+import yaml
 from pymatgen.core.composition import Composition
 
-from heceramics.myglobal import Element_negativity, RCUT
+from heceramics.myglobal import Element_negativity
 from heceramics.myglobal import config_vars, Constants
-from heceramics.data.data_generator import HECMaker, DataMaker
 from heceramics.data.data import myData
 from heceramics.models.datafill import DataFill
 
 CONTCAR_PATH = config_vars["CONTCAR_PATH"]
 DATA_PATH = config_vars["DATA_PATH"]
 float_format = Constants["float_format"]
-cols_headers = ["HEC", "Composition", "formation_energy", "vacancy_formation"]
-cols_global = ["global_H", "global_a", "global_X", "global_VEC", "global_radius", "global_bond"]
-cols_important = ["local_Composition",
-                   "nn_mean_H", "nn_min_rdiff_a", "nn_mean_X", "nn_mismatch_X", "nn_max_rdiff_a",
-                   "vacancy_formation_M1"]
 
-showcols1 = cols_headers + cols_global
-showcols2 = cols_headers + cols_important
-shortcols = cols_headers + cols_global + cols_important
+
+showcols1 = []
+showcols2 = []
+shortcols = []
 def display_df(df, sort_by=["vacancy_formation_M1"], DisplayCols=None):
     pd.set_option('display.max_rows', 100)
     df = df.sort_values(sort_by)
@@ -33,22 +29,49 @@ def display_df(df, sort_by=["vacancy_formation_M1"], DisplayCols=None):
         print("************")
 
 class Predictor:
-    def __init__(self, compstr, outheader, supercell=[5, 5, 5]):
-        self.compstr = compstr
-        self.outfile = outheader + ".csv"
-        self.supercell = supercell
-        thisHEC = HECMaker(self.compstr, supercell=self.supercell)
-        fname = outheader + ".CONTCAR"
-        thisHEC.to_file(fname=fname, direct=True, significant_figures=16)
-        thisDataMaker = DataMaker(fname, scale=thisHEC.scale)
-        thisDataMaker.make_data(outfile=self.outfile, rcut=RCUT, df_calc=None)
-        self.data = myData(self.outfile)
+    def __init__(self, indict):
+        self.indict = indict
 
-    def get_predictions(self, savefile=True):
-        key = "vacancy_formation"
-        featuress =[["nn_mean_H","nn_max_abs_rdiff_a","nn_mismatch_X","nn_mean_X","nn_mean_diff_VEC"]]
-        mname_headers = ["Vacancy_formation"]
-        outkeys = ["vacancy_formation_M1"]
+    @staticmethod
+    def parse_input(fname):
+        with open(fname, 'r') as f:
+            setts = yaml.safe_load(f)
+
+        indict = {}
+        indict["InFile"] = "compstrs.json"
+        indict["OutFile"] = "prediction_out.csv"
+        indict["Input_fname"] = None
+
+        if "InFile" in setts:
+            indict["InFile"] = setts["InFile"]
+
+        if "OutFile" in setts:
+            indict["OutFile"] = setts["OutFile"]
+
+        if "Input_fname" in setts and isinstance(setts["Input_fname"], str):
+            indict["Input_fname"] = setts["Input_fname"]
+        return indict
+
+    @classmethod
+    def from_finput(cls, finput):
+        indict = cls.parse_input(finput)
+        thisobj = cls(indict)
+        return thisobj
+
+    def compute_features(self, input_fname=None):
+        thisfname = self.indict["OutFile"]
+        if isinstance(input_fname, str):
+            thisfname = input_fname
+
+
+
+
+    def get_predictions(self, savefile=True, input_fname=None):
+
+        key = "lattice_constant"
+        featuress =[["features"]] ##put features here
+        mname_headers = ["lattice_constant"]
+        outkeys = ["lattice_constant_M1"]
         modelname = "GBR"
         for ifrom in range(0, len(featuress)):
             features = featuress[ifrom]
@@ -58,22 +81,8 @@ class Predictor:
                                     modelname=modelname,
                                     mname_header=mname_header,
                                     outkey=outkey)
-            thisdatafill.fill_data(savefile=savefile, outfile=self.outfile)
+            thisdatafill.fill_data(savefile=savefile, outfile=self.indict["outfile"])
 
-        key = "original_vacancy_formation"
-        featuress =[["nn_mean_H","nn_max_abs_rdiff_a","nn_mismatch_X","nn_mean_X","nn_mean_diff_VEC"]]
-        mname_headers = ["Original_vacancy_formation"]
-        outkeys = ["original_vacancy_formation_M1"]
-        modelname = "GBR"
-        for ifrom in range(0, len(featuress)):
-            features = featuress[ifrom]
-            mname_header = mname_headers[ifrom] + str(ifrom + 1)
-            outkey = outkeys[ifrom]
-            thisdatafill = DataFill(self.data, key, features,
-                                    modelname=modelname,
-                                    mname_header=mname_header,
-                                    outkey=outkey)
-            thisdatafill.fill_data(savefile=savefile, outfile=self.outfile)
 
     def display_predictions(self):
         pd.set_option('display.max_rows', 100)
@@ -127,7 +136,7 @@ class Screener:
             comp = Composition(compstr)
             rcs.append(comp.reduced_formula)
         rcs = np.array(rcs)
-        self.df = self.df.set_index("ReducedFormula")
+        self.df = self.df.set_index("pretty_formula")
         self.df = self.df.loc[rcs]
 
     def screen_ncompon(self, ncompons):
@@ -183,7 +192,7 @@ class Screener:
             inds = np.compress(ys <= vmax * span + minv, inds)
         self.df = self.df.iloc[inds]
 
-    def display_screener(self, sort_by=["vacancy_formation_M1"], DisplayCols=None):
+    def display_screener(self, sort_by=["Composition"], DisplayCols=None):
         display_df(self.df, sort_by=sort_by, DisplayCols=DisplayCols)
 
     def save_screener(self, outfile=None, ShortCols=None):
