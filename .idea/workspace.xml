@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47bcea88-a9ea-43b9-a3e0-c4e2b7607411" name="Changes" comment="" />
+    <list default="true" id="47bcea88-a9ea-43b9-a3e0-c4e2b7607411" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heceramics/data/compstr_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/heceramics/data/compstr_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heceramics/data/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/heceramics/data/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/heceramics/data/dataframe_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/heceramics/data/dataframe_util.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,68 +36,68 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.Compression_gbr.executor": "Run",
-    "Python.Compression_gbr4summary.executor": "Run",
-    "Python.Elongation_gbr.executor": "Run",
-    "Python.Elongation_gbr4summary.executor": "Run",
-    "Python.NDIP.executor": "Run",
-    "Python.NDIP_fill_parallel.executor": "Run",
-    "Python.PDPlot.executor": "Run",
-    "Python.SFS_gbr.executor": "Run",
-    "Python.Vacancy2_SFS_w_preselect.executor": "Run",
-    "Python.Vacancy_SFS.executor": "Run",
-    "Python.Vacancy_SFS_w_preselect.executor": "Run",
-    "Python.Vacancy_formation_2.executor": "Run",
-    "Python.Vacancy_formation_gbr.executor": "Run",
-    "Python.Vicker_gbr.executor": "Run",
-    "Python.Vicker_gbr4summary.executor": "Run",
-    "Python.Yield_gbr4summary.executor": "Run",
-    "Python.composition_expansion_evaluation.executor": "Run",
-    "Python.compositionspace.executor": "Run",
-    "Python.compstr2prediction.executor": "Run",
-    "Python.make_binary.executor": "Run",
-    "Python.make_database.executor": "Run",
-    "Python.make_element.executor": "Run",
-    "Python.make_weighted_database.executor": "Run",
-    "Python.models.executor": "Run",
-    "Python.myglobal.executor": "Run",
-    "Python.plot.executor": "Run",
-    "Python.plot_custom.executor": "Run",
-    "Python.plot_hecs.executor": "Run",
-    "Python.plot_linear_regression.executor": "Run",
-    "Python.run.executor": "Run",
-    "Python.standardize.executor": "Run",
-    "Python.standarize.executor": "Run",
-    "Python.stardardize.executor": "Run",
-    "Python.ternary_NDIP.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.thermocalc_util.executor": "Run",
-    "Python.utils.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/taoliang/PycharmProjects/HECeramics/WorkPlace/SFS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.Compression_gbr.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Compression_gbr4summary.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Elongation_gbr.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Elongation_gbr4summary.executor&quot;: &quot;Run&quot;,
+    &quot;Python.NDIP.executor&quot;: &quot;Run&quot;,
+    &quot;Python.NDIP_fill_parallel.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PDPlot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.SFS_gbr.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Vacancy2_SFS_w_preselect.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Vacancy_SFS.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Vacancy_SFS_w_preselect.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Vacancy_formation_2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Vacancy_formation_gbr.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Vicker_gbr.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Vicker_gbr4summary.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Yield_gbr4summary.executor&quot;: &quot;Run&quot;,
+    &quot;Python.composition_expansion_evaluation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.compositionspace.executor&quot;: &quot;Run&quot;,
+    &quot;Python.compstr2prediction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.make_binary.executor&quot;: &quot;Run&quot;,
+    &quot;Python.make_database.executor&quot;: &quot;Run&quot;,
+    &quot;Python.make_element.executor&quot;: &quot;Run&quot;,
+    &quot;Python.make_weighted_database.executor&quot;: &quot;Run&quot;,
+    &quot;Python.models.executor&quot;: &quot;Run&quot;,
+    &quot;Python.myglobal.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_custom.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_hecs.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_linear_regression.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;Python.standardize.executor&quot;: &quot;Run&quot;,
+    &quot;Python.standarize.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stardardize.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ternary_NDIP.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.thermocalc_util.executor&quot;: &quot;Run&quot;,
+    &quot;Python.utils.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/taoliang/PycharmProjects/HECeramics/WorkPlace/SFS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/WorkPlace/SFS" />

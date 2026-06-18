@@ -18,69 +18,180 @@ float_format = Constants["float_format"]
 
 Elemental_ROM_KEYs = []
 Compound_ROM_KEYs = []
+Elemental_DELTA_KEYs = []
+Compound_DELTA_KEYs = []
+Elemental_DISTORT_KEYs = []
+Compound_DISTORT_KEYs = []
 
 class myData:
-    def __init__(self, fname):
+    def __init__(self, fname, style=1):
         self.fname = fname
-
         self.df = pd.read_csv(self.fname)
         self.ntot = len(self.df)
         self.elements = Element_negativity
-
+        self.style = style
         self.gooddf = self.df.copy(deep=True)
         self.baddf = pd.DataFrame(columns=self.df.columns.tolist())
+        self.update_data()
+
+    def update_data(self):
         self.ngood = len(self.gooddf)
+        self.nbad = len(self.baddf)
         self.compstrs = self.gooddf["Composition"].to_numpy()
+        if self.style == 0:
+            self.compstrs_A = self.gooddf["Composition"].to_numpy()
+            self.compstrs_B = self.gooddf["Composition"].to_numpy()
+        elif self.style == 1:
+            self.compstrs_A = self.gooddf["Composition_A"].to_numpy()
+            self.compstrs_B = self.gooddf["Composition_A"].to_numpy()
+        elif self.style == 2:
+            self.compstrs_A = self.gooddf["Composition_A"].to_numpy()
+            self.compstrs_B = self.gooddf["Composition_B"].to_numpy()
 
     def save_to(self, fname, df=None):
-        if df is None: df = self.df.copy()
+        if df is None: df = self.gooddf.copy()
         df.to_csv(fname, index=False, float_format=float_format)
 
-    def normalization(self, df, keys=None, savefile=False, outfile=None, Add_norm=False):
-        columns = df.columns.tolist()
-        if keys is None:
-            thiskeys = columns[0:len(columns)]
-        else:
-            if isinstance(keys, str): keys = [keys]
-            thiskeys = []
-            for key in keys:
-                if key in df.columns:
-                    thiskeys.append(key)
-
-        for ikey in range(len(thiskeys)):
-            thiskey = thiskeys[ikey]
-            thisnorm = True
-            thisvals = df[thiskey].to_numpy()
-            vmin = np.min(thisvals)
-            vmax = np.max(thisvals)
-            if vmax == vmin: thisnorm = False
-            if thisnorm:
-                normvals = MyUtils.value_normalization(thisvals, vmin, vmax)
-            else:
-                normvals = np.ones(len(df))
-            if Add_norm: df[thiskey + "_norm"] = normvals
-
-        if savefile:
-            if outfile is None:
-                outfile = self.fname
-                if "_normed" not in outfile:
-                    outfile = outfile.replace(".csv", "")
-                    outfile = outfile + "_normed.csv"
-            self.save_to(outfile, df=df)
-        return df
-
-    def get_all_features(self, df=None, recompute=False):
+    def get_all_features(self, df=None):
         if df is None: df = self.gooddf.copy()
+        self.gooddf = self.get_elmental_ROMs(df=df)
+        self.gooddf = self.get_compound_ROMs(df=df)
+        self.gooddf = self.get_elmental_DELTAs(df=df)
+        self.gooddf = self.get_compound_DELTAs(df=df)
+        self.gooddf = self.get_elmental_DISTORTs(df=df)
+        self.gooddf = self.get_compound_DISTORTs(df=df)
+        self.gooddf = self.get_constructed_features(df=df)
         return df
 
-    def get_elmental_ROMs(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
-        pass
+    def get_elmental_ROMs(self, keys=Elemental_ROM_KEYs, df=None, DF_REFERENCE=DF_elements, Index_style=0):
+        if df is None: df = self.gooddf.copy()
+        for ikey in range(len(keys)):
+            key = keys[ikey]
+            if self.style == 0:
+                compstrs = df["Composition"].to_numpy()
+            elif self.style == 1:
+                compstrs = df["Composition_A"].to_numpy()
 
-    def get_compound_ROMs(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
-        pass
+            vs = []
+            for icomp in range(len(compstrs)):
+                compstr = compstrs[icomp]
+                thisCU = CompstrUtil(compstr)
+                thisv = thisCU.compstr2ROM(key, DF_REFERENCE, Index_style=Index_style)
+                vs.append(thisv)
+            outkey = key + "_ROM"
+            df[outkey] = vs
+        return df
 
-    def get_mismatches(self, keys=None, df=None, DF_REFERENCE=None, Index_style=0):
-        pass
+
+    def get_compound_ROMs(self, keys=Compound_ROM_KEYs, df=None, DF_REFERENCE=DF_binaries, Index_style=1):
+        if df is None: df = self.gooddf.copy()
+        for ikey in range(len(keys)):
+            key = keys[ikey]
+            if self.style == 0:
+                compstrs = df["Composition"].to_numpy()
+            elif self.style == 1:
+                compstrs = df["Composition_A"].to_numpy()
+
+            vs = []
+            for icomp in range(len(compstrs)):
+                compstr = compstrs[icomp]
+                thisCU = CompstrUtil(compstr)
+                thisv = thisCU.compstr2ROM(key, DF_REFERENCE, Index_style=Index_style)
+                vs.append(thisv)
+            outkey = key + "_ROM"
+            df[outkey] = vs
+        return df
+
+    def get_elmental_DELTAs(self, keys=Elemental_DELTA_KEYs, df=None, DF_REFERENCE=DF_elements, Index_style=0):
+        if df is None: df = self.gooddf.copy()
+        for ikey in range(len(keys)):
+            key = keys[ikey]
+            if self.style == 0:
+                compstrs = df["Composition"].to_numpy()
+            elif self.style == 1:
+                compstrs = df["Composition_A"].to_numpy()
+            meankey = key + "_ROM"
+            means = df[meankey].to_numpy()
+            vs = []
+            for icomp in range(len(compstrs)):
+                compstr = compstrs[icomp]
+                mean = means[icomp]
+                thisCU = CompstrUtil(compstr)
+                thisv = thisCU.compstr2delta(key, mean, DF_REFERENCE, compstr=compstr, Index_style=Index_style)
+                vs.append(thisv)
+            outkey = key + "_DELTA"
+            df[outkey] = vs
+        return df
+
+    def get_compound_DELTAs(self, keys=Compound_DELTA_KEYs, df=None, DF_REFERENCE=DF_binaries, Index_style=1):
+        if df is None: df = self.gooddf.copy()
+        for ikey in range(len(keys)):
+            key = keys[ikey]
+            if self.style == 0:
+                compstrs = df["Composition"].to_numpy()
+            elif self.style == 1:
+                compstrs = df["Composition_A"].to_numpy()
+            meankey = key + "_ROM"
+            means = df[meankey].to_numpy()
+            vs = []
+            for icomp in range(len(compstrs)):
+                compstr = compstrs[icomp]
+                mean = means[icomp]
+                thisCU = CompstrUtil(compstr)
+                thisv = thisCU.compstr2delta(key, mean, DF_REFERENCE, compstr=compstr, Index_style=Index_style)
+                vs.append(thisv)
+            outkey = key + "_DELTA"
+            df[outkey] = vs
+        return df
+
+    def get_elmental_DISTORTs(self, keys=Elemental_DISTORT_KEYs, df=None, DF_REFERENCE=DF_elements, Index_style=0):
+        if df is None: df = self.gooddf.copy()
+        for ikey in range(len(keys)):
+            key = keys[ikey]
+            if self.style == 0:
+                compstrs = df["Composition"].to_numpy()
+            elif self.style == 1:
+                compstrs = df["Composition_A"].to_numpy()
+            vs = []
+            vmaxes = []
+            for icomp in range(len(compstrs)):
+                compstr = compstrs[icomp]
+                mean = means[icomp]
+                thisCU = CompstrUtil(compstr)
+                thisv, thismax = thisCU.compstr2distort(key, DF_REFERENCE, compstr=compstr, Index_style=Index_style)
+                vs.append(thisv)
+                vmaxes.append(thismax)
+            outkey = key + "_DISTORT"
+            df[outkey] = vs
+            df[outkey + "_MAX"] = vmaxes
+        return df
+
+    def get_compound_DISTORTs(self, keys=Compound_DISTORT_KEYs, df=None, DF_REFERENCE=DF_binaries, Index_style=1):
+        if df is None: df = self.gooddf.copy()
+        for ikey in range(len(keys)):
+            key = keys[ikey]
+            if self.style == 0:
+                compstrs = df["Composition"].to_numpy()
+            elif self.style == 1:
+                compstrs = df["Composition_A"].to_numpy()
+            vs = []
+            vmaxes = []
+            for icomp in range(len(compstrs)):
+                compstr = compstrs[icomp]
+                thisCU = CompstrUtil(compstr)
+                thisv, thismax = thisCU.compstr2delta(key, DF_REFERENCE, compstr=compstr, Index_style=Index_style)
+                vs.append(thisv)
+                vmaxes.append(thismax)
+            outkey = key + "_DISTORT"
+            df[outkey] = vs
+            df[outkey + "_MAX"] = vmaxes
+        return df
+
+    def get_constructed_features(self, df=None):
+        if df is None: df = self.gooddf.copy()
+        DFU = DataFrameUtils(df)
+        df = DFU.get_constructed_features()
+        return df
 
     ############################################################
     def select_by_CS(self, df, compspace, condition, ncompon=None, style=0, set2gooddf=False):
@@ -198,5 +309,38 @@ class myData:
             return gooddf, pd.concat([baddf1, baddf2])
         else:
             return self.gooddf, self.baddf
+
+    def normalization(self, df, keys=None, savefile=False, outfile=None, Add_norm=False):
+        columns = df.columns.tolist()
+        if keys is None:
+            thiskeys = columns[0:len(columns)]
+        else:
+            if isinstance(keys, str): keys = [keys]
+            thiskeys = []
+            for key in keys:
+                if key in df.columns:
+                    thiskeys.append(key)
+
+        for ikey in range(len(thiskeys)):
+            thiskey = thiskeys[ikey]
+            thisnorm = True
+            thisvals = df[thiskey].to_numpy()
+            vmin = np.min(thisvals)
+            vmax = np.max(thisvals)
+            if vmax == vmin: thisnorm = False
+            if thisnorm:
+                normvals = MyUtils.value_normalization(thisvals, vmin, vmax)
+            else:
+                normvals = np.ones(len(df))
+            if Add_norm: df[thiskey + "_norm"] = normvals
+
+        if savefile:
+            if outfile is None:
+                outfile = self.fname
+                if "_normed" not in outfile:
+                    outfile = outfile.replace(".csv", "")
+                    outfile = outfile + "_normed.csv"
+            self.save_to(outfile, df=df)
+        return df
 
 

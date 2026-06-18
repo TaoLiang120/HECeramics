@@ -38,7 +38,7 @@ class CompstrUtil:
             thisv += ival * ifrac
         return thisv
 
-    def compstr2mismatch(self, key, mean, DF_REFERENCE, compstr=None, Index_style=0):
+    def compstr2delta(self, key, mean, DF_REFERENCE, compstr=None, Index_style=0):
         if compstr is None: compstr = self.pretty_formula
         comp = Composition(compstr)
         nele = len(comp.elements)
@@ -51,6 +51,34 @@ class CompstrUtil:
             ival = DF_REFERENCE.loc[index4DF, key]
             thisv += ifrac * np.power(1.0 - ival / mean, 2)
         return np.sqrt(thisv)
+
+    def compstr2distort(self, key, DF_REFERENCE, compstr=None, Index_style=0):
+        if compstr is None: compstr = self.pretty_formula
+        comp = Composition(compstr)
+        nele = len(comp.elements)
+        thisv = 0.0
+        thismax = 0.0
+        for i in range(nele):
+            iele = comp.elements[i]
+            isym = iele.symbol
+            ifrac = comp.get_atomic_fraction(iele)
+            index4DF_i = get_DF_Index(Index_style, isym)
+            ival = DF_REFERENCE.loc[index4DF_i, key]
+            ival_tot = 0.0
+            for j in range(nele):
+                jele = comp.elements[j]
+                jsym = jele.symbol
+                jfrac = comp.get_atomic_fraction(jele)
+                index4DF_j = get_DF_Index(Index_style, jsym)
+                jval = DF_REFERENCE.loc[index4DF_j, key]
+                v = jfrac * np.power((ival - jval)/(ival + jval), 2)
+                ival_tot += v
+            ival_tot = np.sqrt(ival_tot)
+            ival_tot = ival_tot * ifrac * 9.0 / 8.0
+            if ival_tot > thismax: thismax = ival_tot
+            thisv += ival_tot
+        return thisv, thismax
+
 
     def compstr2conc(self, compstr=None):
         if compstr is None: compstr = self.pretty_formula
