@@ -156,7 +156,6 @@ class myData:
             vmaxes = []
             for icomp in range(len(compstrs)):
                 compstr = compstrs[icomp]
-                mean = means[icomp]
                 thisCU = CompstrUtil(compstr)
                 thisv, thismax = thisCU.compstr2distort(key, DF_REFERENCE, compstr=compstr, Index_style=Index_style)
                 vs.append(thisv)

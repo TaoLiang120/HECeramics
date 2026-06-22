@@ -15,12 +15,14 @@ class DataFrameUtils:
     def __init__(self, df):
         self.df = df
 
-    def get_pugh_ratio(self):
-        if 'Bulk_modulus_ROM' in df_columns:
+    def get_pugh_ratio(self, df=None):
+        if df is None: df = self.df.copy()
+
+        if 'Bulk_modulus_ROM' in df.columns:
             Bs = df['Bulk_modulus_ROM'].to_numpy()
         else:
             Bs = df['Bulk_modulus'].to_numpy()
-        if 'Shear_modulus_ROM' in df_columns:
+        if 'Shear_modulus_ROM' in df.columns:
             Ss = df['Shear_modulus_ROM'].to_numpy()
         else:
             Ss = df['Shear_modulus'].to_numpy()

@@ -20,8 +20,10 @@ Constants = {"kb": 8.6173324E-5, "bohr2angstrom": 0.529177249, "density2gcm": 1.
              "eVA2GPa": 160.2177, "GPa2eVA": 0.00624150648, "KJ2eVA": 1.0/96.4915666370759,
              "J2eVA": 1.0/96491.5666370759,  "TC2CPA_volume": 1660539.0671738465, "float_format": "%.8f"}
 
-Element_list = ["Hf", "Nb", "Ta", "Ti", "Zr", "W", "Mo", "V", "Sc", "Y", "C"]
-Element_negativity = ['Y', 'Hf', 'Zr', 'Sc', 'Ta', 'Ti', 'Nb', 'V', 'Mo', 'W', 'C']
+Element_list = ['Ce', 'Y', 'Pu', 'Th', 'Hf', 'Zr', 'Sc', 'Ta', 'Pa', 'Ti', 'Mn', 'Nb', 'Al', 'V',
+                'Zn', 'Cr', 'Fe', 'Co', 'Re', 'Cu', 'Tc', 'Ni', 'Mo', 'Pd', 'Os', 'Ir', 'Ru', 'Rh', 'W', 'C']
+Element_negativity = ['Ce', 'Y', 'Pu', 'Th', 'Hf', 'Zr', 'Sc', 'Ta', 'Pa', 'Ti', 'Mn', 'Nb', 'Al', 'V',
+                      'Zn', 'Cr', 'Fe', 'Co', 'Re', 'Cu', 'Tc', 'Ni', 'Mo', 'Pd', 'Os', 'Ir', 'Ru', 'Rh', 'W', 'C']
 
 nele_default = len(Element_negativity)
 
