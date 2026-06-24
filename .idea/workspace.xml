@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47bcea88-a9ea-43b9-a3e0-c4e2b7607411" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/WorkPlace/Simon/handle.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/heceramics/myelements/element_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heceramics/data/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/heceramics/data/data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heceramics/data/dataframe_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/heceramics/data/dataframe_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heceramics/myelements/element.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/heceramics/myelements/myelements.py" beforeDir="false" afterPath="$PROJECT_DIR$/heceramics/myelements/myelements.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heceramics/myglobal.py" beforeDir="false" afterPath="$PROJECT_DIR$/heceramics/myglobal.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +55,8 @@
     &quot;Python.composition_expansion_evaluation.executor&quot;: &quot;Run&quot;,
     &quot;Python.compositionspace.executor&quot;: &quot;Run&quot;,
     &quot;Python.compstr2prediction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.elemental.executor&quot;: &quot;Run&quot;,
+    &quot;Python.handle.executor&quot;: &quot;Run&quot;,
     &quot;Python.make_binary.executor&quot;: &quot;Run&quot;,
     &quot;Python.make_database.executor&quot;: &quot;Run&quot;,
     &quot;Python.make_element.executor&quot;: &quot;Run&quot;,
@@ -86,7 +81,7 @@
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/taoliang/PycharmProjects/HECeramics/WorkPlace/SFS&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/taoliang/PycharmProjects/HECeramics/heceramics/myelements&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -104,11 +99,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/heceramics/myelements" />
       <recent name="$PROJECT_DIR$/WorkPlace/SFS" />
       <recent name="$PROJECT_DIR$/WorkPlace/database_generator" />
       <recent name="$PROJECT_DIR$/heceramics/utils" />
       <recent name="$PROJECT_DIR$/heceramics/data" />
-      <recent name="$PROJECT_DIR$/Data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/WorkPlace/ML_development" />
@@ -172,5 +167,16 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/WorkPlace/Simon_databasehandler/handle.py</url>
+          <line>139</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

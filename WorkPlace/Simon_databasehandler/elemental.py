@@ -2,6 +2,9 @@ import pandas as pd
 from pymatgen.core.periodic_table import Element
 rename_cols = {"CompositionA": "Composition", "vec": "VEC"}
 fname = "element_data.csv"
+Element_list = ['Ce', 'Y', 'Pu', 'Th', 'Hf', 'Zr', 'Sc', 'Ta', 'Pa', 'Ti', 'Mn', 'Nb', 'Al', 'Tl', 'V', 'Zn', 'Cr', 'Cd', 'Fe', 'Co', 'Re', 'Cu', 'Tc', 'Ni', 'Mo', 'Pd', 'Os', 'Ir', 'Ru', 'Rh', 'W', 'C']
+
+'''
 df = pd.read_csv(fname)
 df = df.sort_values(by="electronegativity")
 df = df.rename(columns=rename_cols)
@@ -11,7 +14,7 @@ df.to_csv("element_data_sorted.csv", index=False)
 print(df["Composition"].tolist())
 compstrs = df["Composition"].tolist()
 
-Element_list = ['Ce', 'Y', 'Pu', 'Th', 'Hf', 'Zr', 'Sc', 'Ta', 'Pa', 'Ti', 'Mn', 'Nb', 'Al', 'Tl', 'V', 'Zn', 'Cr', 'Cd', 'Fe', 'Co', 'Re', 'Cu', 'Tc', 'Ni', 'Mo', 'Pd', 'Os', 'Ir', 'Ru', 'Rh', 'W', 'C']
+
 
 columns = df.columns.tolist()
 for isym in range(len(Element_list)):
@@ -61,3 +64,21 @@ for isym in range(len(Element_list)):
 df = df.sort_values(by="electronegativity")
 df.to_csv("element.csv", index=False)
 print(df["Composition"].tolist())
+'''
+
+fname = "element.csv"
+df = pd.read_csv(fname)
+compstrs = df["Composition"].tolist()
+vecs = df["VEC"].tolist()
+affinities = []
+for isym in range(len(compstrs)):
+    compstr = compstrs[isym]
+    if compstr == "Co":
+        vecs[isym] = 2
+    el = Element(compstr)
+    affinity = el.data['Electron affinity']
+    affinities.append(affinity)
+    print(el.symbol, el.data['Electron affinity'], el.X, vecs[isym])
+df["VEC"] = vecs
+df["affinity"] = affinities
+df.to_csv("fname", index=False)

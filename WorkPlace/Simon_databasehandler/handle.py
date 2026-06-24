@@ -108,7 +108,7 @@ def get_merged_df(df1, df2):
                     if str(thisv1) == "nan" and str(thisv2) != "nan":
                         thisdict[col] = thisv2
                     elif str(thisv1) != "nan" and str(thisv2) != "nan":
-                        thisdict[col] = thisv1
+                        thisdict[col] = thisv2
                         thisdiff = thisv2 - thisv1
                         if thisdiff != 0:
                             print(f"Warning: {compstr2} {col} {thisv1} {thisv2}")
@@ -147,7 +147,7 @@ for i in range(0, len(fnames)):
     print(f"Finished {outfname}")
 '''
 
-
+'''
 fname1 = "aflow_unique.csv"
 fname2 = "icsd_unique.csv"
 outfname = "merged_rock_salt.csv"
@@ -155,8 +155,14 @@ df1 = pd.read_csv(fname1)
 df2 = pd.read_csv(fname2)
 df_merged = get_merged_df(df1, df2)
 df_merged.to_csv(outfname, index=False)
+'''
 
-
-
-
-
+outfname = "merged_rock_salt.csv"
+df = pd.read_csv(outfname)
+Acompstrs = df["Composition_A"].tolist()
+compstrs = []
+for i in range(len(Acompstrs)):
+    acompstr = Acompstrs[i]
+    compstrs.append(acompstr + 'C')
+df['Composition'] = compstrs
+df.to_csv(outfname, index=False)
