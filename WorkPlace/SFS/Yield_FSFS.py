@@ -2,8 +2,8 @@ import os, sys
 import numpy as np
 import pandas as pd
 
-from myml.utils.GBR_functions import *
-from myml.utils.SFS_gbr import *
+from heceramics.work.GBR_functions import *
+from heceramics.work import *
 
 float_format = '%.8f'
 allfs = ['temp_ratio', 'E_negativity', 'delta_Eb0', 'sigma_y0', 'Exp_Bulk_ROM', 'Exp_Youngs_ROM', 'Exp_Shear_ROM',

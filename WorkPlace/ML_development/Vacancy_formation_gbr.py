@@ -14,7 +14,6 @@ colorkey = None
 keys = ["vacancy_formation"]
 thress = [0.90, 0.916]  ##0.916 for vacancy_formation, 0.865 for original
 regressor = "GBR"
-HECS = None
 warm_start = True
 if isLOAD:
     loadmodel = True
@@ -38,7 +37,7 @@ for ifrom in range(0,len(infnames)):
         thres_diff = thres_diffs[itype]
 
         train_model(fname, mname_header, thres, keys, features, regressor,
-                  HECS=HECS, colorkey=colorkey, loadmodel=loadmodel, savemodel=savemodel,
+                  colorkey=colorkey, loadmodel=loadmodel, savemodel=savemodel,
                   nloop=nloop, thres_diff=thres_diff,
                   set2all=True, min_samples_leaf=min_samples_leaf,
                   warm_start=warm_start, SHAP_Plot=SHAP_Plot, SHAP_output=False)

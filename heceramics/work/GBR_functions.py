@@ -12,17 +12,13 @@ float_format = '%.8f'
 performance_keys = ["iloop", "key", "mse_test", "rmse_test", "mae_test", "rmae_test", "r2_test",
                     "mse_all", "rmse_all", "mae_all", "rmae_all", "r2_all"]
 def train_model(fname, mname_header, thres, keys, features, regressor,
-                    HECS=None, colorkey=None, loadmodel=False, savemodel=True, nloop=100,
+                    colorkey=None, loadmodel=False, savemodel=True, nloop=100,
                     perform_df=None, elements=None,
                     thres_diff=5.0, set2all=False, min_samples_leaf=None, warm_start=True, TEST=False,
                     SHAP_Plot=True, SHAP_output=False, PDP_output=False):
 
     thisdata = myData(os.path.join(DATA_PATH, fname))
     thisdata.validate_dataframe(df=None, set2data=True)
-    if HECS is None:
-        pass
-    else:
-        thisdata.gooddf, baddf = thisdata.select_by_HECS(thisdata.gooddf, HECS, set2gooddf=True)
 
     if perform_df is None: perform_df = pd.DataFrame(columns=performance_keys)
     perform_df = perform_df.set_index(performance_keys[0])
